@@ -24,12 +24,17 @@
 						<img src="img/search.png">
 					</div>-->
 					<div>
-					    <input type="text" placeholder="Where do you want to go...">
-					 </div>					
+					    <input id="tripAddr" type="text" placeholder="Where do you want to go...">
+					 </div>	
+					 <div id="map"></div>			
 				</center>
 			</div>
-			
 		</div>
 	</div>	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhpmbD-MXs9ZsIe4vqIVDcy4TAq9wFbOQ&callback=initMap">
+    </script>
+    <script type="text/javascript" src="js/map.js"></script>
 </body>
 </html>

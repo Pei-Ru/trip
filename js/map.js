@@ -1,6 +1,10 @@
 var map;
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+	if(document.URL.indexOf("#")!=-1){
+		location.hash = '';
+		location.href = document.URL.replace("#","");
+	}
+	map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 23.5, lng: 121},
     zoom: 6 });
     $('#tripAddr').change(function(){
@@ -15,5 +19,7 @@ function initMap() {
 			map.setCenter(new google.maps.LatLng({ lat: addrLat, lng: addrLng }));
 			map.setZoom(15);			
 		});
+    }).click(function(){
+    	location.hash = 'tripAddr';
     });
 }

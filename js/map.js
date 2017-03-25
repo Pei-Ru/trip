@@ -15,11 +15,21 @@ function initMap() {
 			var addrData = data;
 			var addrLat = addrData.results[0].geometry.location.lat;
 			var addrLng = addrData.results[0].geometry.location.lng;
+			var addressComponentsNum =  addrData.results[0].address_components.length;
+			var boundle = addrData.results[0].geometry.bounds;
 			console.log(addrLat+" , "+addrLng);
 			map.setCenter(new google.maps.LatLng({ lat: addrLat, lng: addrLng }));
-			map.setZoom(15);			
+			if(typeof boundle == undefined && addressComponentsNum==4 ){
+				map.setZoom(getMapZoomFormula(6));
+			}else{
+				map.setZoom(getMapZoomFormula(addressComponentsNum));
+			}		
 		});
     }).click(function(){
     	location.hash = 'tripAddr';
     });
+}
+function getMapZoomFormula(num){
+	var map = [4,5,8,11,14,17];
+	return map[num-1];
 }
